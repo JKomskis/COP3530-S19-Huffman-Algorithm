@@ -1,35 +1,56 @@
-.DEFAULT_GOAL := all
-CFLAGS= -Wall -pedantic -std=c++11
+# TARGET is the name of our final executable binary
+TARGET = test
+# BUILD_DIR is where our object (.o) files
+# and dependency (.d) files will go
+BUILD_DIR = ./build
 
-all: build/test run
+#find all source (.cpp) files
+SRC_FILES := $(wildcard *.cpp)
+#generate a list of all object files by prepending
+# BUILD_DIR/ to each file and changing the extension
+# from .cpp to .o
+OBJ_FILES := $(patsubst %.cpp,$(BUILD_DIR)/%.o,$(SRC_FILES))
 
-#create build directory
-build:
-	mkdir -p build
+# flags to be used when compiling
+# -std=c++11 enables the c++11 standard
+# -MMD enables the creation of dependency files
+# -Wall -Wextra -pedantic -pedantic-errors turn on many warning and error messages
+CPPFLAGS = -std=c++11 -MMD -Wall -Wextra -pedantic -pedantic-errors
 
-#build catch main
-build/catch_main.o: | build
-	g++ $(CFLAGS) catch_main.cpp -c -o ./build/catch_main.o
+# when make is executed without any arguments
+# the default goal will be targeted
+.DEFAULT_GOAL = all
+# build the target file and run it
+all: $(BUILD_DIR)/$(TARGET) run
 
-#build huffman tree
-build/huffman_tree.o: huffman_tree.cpp | build
-	g++ $(CFLAGS) huffman_tree.cpp -c -o ./build/huffman_tree.o
+# build target
+$(BUILD_DIR)/$(TARGET): $(OBJ_FILES)
+	g++ $(CPPFLAGS) -o $@ $^
 
-#build tests
-build/tests.o: tests.cpp huffman_tree.h | build
-	g++ $(CFLAGS) tests.cpp -c -o ./build/tests.o
+# create build directory
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
 
+# build object files
+# the "| build" makes it so the build directory
+# will be created if needed, but the timestamp
+# won't be used to determine if the goal should
+# be run again
+$(BUILD_DIR)/%.o: %.cpp | build
+	g++ $(CPPFLAGS) $< -c -o $@
 
-#build test file
-build/test: build/catch_main.o build/huffman_tree.o build/tests.o | build
-	g++ $(CFLAGS) build/catch_main.o build/tests.o build/huffman_tree.o -o build/test
+# build the dependency (.d) files
+# the second word saw to take each item from
+# OBJ_FILES and replace the .o with a .d
+# resulting in a list of dependency files
+-include $(OBJ_FILES:.o=.d) 
 
-#run test file
+# run test file
 .PHONY: run
-run: build/test
-	./build/test
+run: $(BUILD_DIR)/$(TARGET)
+	$(BUILD_DIR)/$(TARGET)
 
-#delete compiled binaries
+# delete compiled binaries
 .PHONY: clean
 clean:
 	rm -rf build
