@@ -52,7 +52,7 @@ Sources:
 
 ### Linux
 
-1. Opne your terminal of choice
+1. Open your terminal of choice
 2. Run the following command to update your packages:
 
 ```bash
@@ -66,6 +66,20 @@ sudo apt-get install build-essential
 ```
 
 ### Mac
+
+1. Open your terminal (command + space and type terminal)
+2. Run the following command to install the g++ compiler:
+
+```bash
+g++
+```
+
+3. Choose Install when prompted to install the Xcode command line tools
+4. Test successful installation of g++ in terminal by typing g++ and ensuring you get the follwing as output:
+
+```bash
+clang: error: no input files
+```
 
 ## Usage
 
