@@ -7,7 +7,7 @@ class huffman_tree {
 		~huffman_tree();
 		
 		std::string get_character_code(char character);
-		std::string encode(std::string filename);
+		std::string encode(std::string file_name);
 		std::string decode(std::string string_to_decode);		
 };
 #endif

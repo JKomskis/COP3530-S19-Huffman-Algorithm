@@ -13,10 +13,10 @@ std::string huffman_tree::get_character_code(char character){
 	return "";
 }
 
-std::string huffman_tree::encode(std::string filename){
+std::string huffman_tree::encode(std::string file_name){
 	return "";
 }
 
-std::string huffman_tree::decode(std::string filename){
+std::string huffman_tree::decode(std::string string_to_decode){
 	return "";
 }
