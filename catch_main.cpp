@@ -3,7 +3,7 @@
 #include "huffman_tree.h"
 
 TEST_CASE("Test case on file.txt"){
-    const std::string file_to_test = "file.txt";
+    const std::string file_to_test = "iliad_1.txt";
     const char char_to_test = ' ';
 
     huffman_tree tree(file_to_test);
