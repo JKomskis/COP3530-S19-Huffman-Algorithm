@@ -105,7 +105,7 @@ compilation terminated.
 
 Note: The first build can take up to 30 seconds as it has to compile everything. Subsequent build should be much faster, as it will only recompile the files that have changed.
 
-If you are experiencing problems compiling and running the project, run "make clean" to delete all complied files. Then, trying running "make" again.
+If you are experiencing problems compiling and running the project, run "make clean" to delete all compiled files. Then, trying running "make" again.
 
 ## Resouces
 
