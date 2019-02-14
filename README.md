@@ -73,7 +73,7 @@ sudo apt-get install build-essential
 ```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
-3. Once complete run the following command to update Hombrew and install GNU compiler collection 8:
+3. Once complete, run the following command to update Hombrew and install GNU compiler collection 8:
 
 ```bash
 brew update && brew upgrade && brew install gcc@8
@@ -90,7 +90,7 @@ brew update && brew upgrade && brew install gcc@8
 - while holding command key tab until Terminal instance is selected
 - press Q once Terminal icon is selected to quit all Terminal sessions
 
-6. Reopen a Terminal and test successful installation of g++ by typing g++ and ensuring you get the follwing as output:
+6. Reopen Terminal and test successful installation of g++ by typing g++ and ensuring you get the follwing as output:
 
 ```bash
 g++: fatal error: no input files
