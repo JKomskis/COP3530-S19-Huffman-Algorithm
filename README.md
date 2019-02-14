@@ -67,18 +67,34 @@ sudo apt-get install build-essential
 
 ### Mac
 
-1. Open your terminal (command + space and type terminal)
-2. Run the following command to install the g++ compiler:
+1. Open Terminal (command + space and type terminal)
+2. Run the following command to install the Homebrew package manager for macOS: 
 
 ```bash
-g++
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+3. Once complete run the following command to update Hombrew and install GNU compiler collection 8:
+
+```bash
+brew update && brew upgrade && brew install gcc@8
 ```
 
-3. Choose Install when prompted to install the Xcode command line tools
-4. Test successful installation of g++ in terminal by typing g++ and ensuring you get the follwing as output:
+4. Once complete, run the following command to update your PATH environment variable and rename g++-8 to g++:
+ 
+ ```bash
+ echo "PATH=\"/usr/local/bin:$PATH\"" >> ~/.bash_profile && mv /usr/local/bin/g++-8 /usr/local/bin/g++
+ ``` 
+
+5. Close all Terminal sessions for changes to take effect: 
+- hold command and press tab to view open programs
+- while holding command key tab until Terminal instance is selected
+- press Q once Terminal icon is selected to quit all Terminal sessions
+
+6. Reopen a Terminal and test successful installation of g++ by typing g++ and ensuring you get the follwing as output:
 
 ```bash
-clang: error: no input files
+g++: fatal error: no input files
+compilation terminated.
 ```
 
 ## Usage
