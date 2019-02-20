@@ -20,7 +20,7 @@ TEST_CASE("Test case on file.txt") {
 TEST_CASE("Balanced Tree") {
     huffman_tree tree("texts/balanced_alphabet.txt");
 
-    SECTION("Verify Huffman Code") {
+    SECTION("Verify Huffman Code Length") {
         std::string encoded_string = tree.encode("texts/balanced_alphabet.txt");
         CHECK(encoded_string.length() == 130);
     }
@@ -36,9 +36,19 @@ TEST_CASE("Balanced Tree") {
 TEST_CASE("Tall Tree") {
     huffman_tree tree("texts/unbalanced_alphabet.txt");
 
-    SECTION("Verify Huffman Code") {
+    SECTION("Verify Huffman Code Length") {
         std::string encoded_string = tree.encode("texts/unbalanced_alphabet.txt");
         CHECK(encoded_string.length() == 2035);
+    }
+
+    SECTION("Verify Character Code Lengths") {
+        // for this tree, a and b should have a code length of 9
+        // after that, each consecutive letter's code length should
+        // decrease by 1 until we get to j, which has a code length of 1
+        CHECK(tree.get_character_code('a').length() == 9);
+        for(char c = 'b'; c <= 'j'; ++c) {
+            CHECK(tree.get_character_code(c).length() == 9 - (c - 'b'));
+        }
     }
 
     SECTION("Encode/Decode") {
@@ -51,7 +61,7 @@ TEST_CASE("Tall Tree") {
 TEST_CASE("All ASCII Values") {
     huffman_tree tree("texts/all_ascii.txt");
 
-    SECTION("Verify Huffman Code") {
+    SECTION("Verify Huffman Code Length") {
         std::string encoded_string = tree.encode("texts/all_ascii.txt");
         CHECK(encoded_string.length() == 896);
     }

@@ -1,5 +1,13 @@
 # COP3530-S19-Huffman-Algorithm
 
+## Project Completion & Submission Guidelines and Notes
+
+Your goal in this project is to implement the interface of a Huffman Tree class to encode and decode data based on character frequencies. To accomplish this, you will complete the function stubs provided in `huffman_tree.cpp`. If you would like to add additional helper functions or structs, you may declare them in `huffman_tree.h` and define them in `huffman_tree.cpp`. Do not change the interface of any existing functions, it will cause your project to fail the test cases we run against it. A few test cases are provided in `tests.cpp` so you can verify your interface is working properly. When we grade the projects, we will add additional tests cases to verify your implementation is correct. The provided tests are not thorough and do not guarantee your project will pass our test cases. You are encouraged to make your own tests cases. Outside of `huffman_tree.h`, `huffman_tree.cpp`, and `tests.cpp`, you should not modify any files.
+
+Instructions are provided below so you can develop the project on your local machine. However, to make grading as uniform and easy as possible, you must SSH into storm.cise.ufl.edu and test your project there before submitting. While we do not expect any significant differences between compilers on different platforms, you never know.
+
+To submit the project, submit **only** your `huffman_tree.cpp` and `huffman_tree.h` files to canvas. Attach each file individually, do **not** zip, tar, or compress them. We will have a script that copies your files into a clean project, adds our test cases, and runs the tests against your implementation.
+
 ## Installation & Setup
 
 ### Windows
@@ -99,9 +107,11 @@ compilation terminated.
 
 ## Usage
 
-1. Open your terminal (Ubuntu you're on Windows and following option 1, Command Prompt if you're on Windows and following option 2, your terminal of choice if you're on Linux, or Terminal if you're on a Mac)
-2. Navigate to the folder containg the project skeleton. The "cd" command will allow you to change directories. If you want to see what is inside a directory, use the "ls" command.
-3. Run "make" in the project skeleton folder to automatically build the project and run it against the test cases. If everything works properly you should see a couple commands run on the terminal, and a line at the very end that says "All tests passed (1 assertion in 1 test case)".
+1. Go to to the releases page (https://github.com/JKomskis/COP3530-S19-Huffman-Algorithm/releases) and download the zip folder for version 1.0 of the project.
+2. Extract the zip folder.
+3. Open your terminal (Ubuntu you're on Windows and following option 1, Command Prompt if you're on Windows and following option 2, your terminal of choice if you're on Linux, or Terminal if you're on a Mac)
+4. Navigate into the project folder. The "cd" command will allow you to change directories. If you want to see what is inside a directory, use the "ls" command.
+5. Run "make" in the project skeleton folder to automatically build the project and run it against the test cases. If everything works properly you should see a couple commands run on the terminal, and a line at the very end that says "All tests passed (22 assertions in 4 test cases)".
 
 Note: The first build can take up to 30 seconds as it has to compile everything. Subsequent build should be much faster, as it will only recompile the files that have changed.
 
