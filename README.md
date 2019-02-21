@@ -18,31 +18,31 @@ Note: This will only work on Windows 10. If you are using another version of Win
 
 1. Open PowerShell as Administrator and run:
 
-```PowerShell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
-```
+    ```PowerShell
+    Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+    ```
 
-1. Restart your computer when prompted
-2. Follow [this link](https://www.microsoft.com/store/p/ubuntu/9nblggh4msv6) to go to the Microsoft Store and click "Get" to install the Ubuntu distro.
-3. Click the "Launch" button in the Windows store or launch the new "Ubuntu" app from the start menu.
-4. Wait for the installation to complete
-5. Follow the console prompts to create a new user and password
-6. Run the following command in the terminal prompt to update your packages:
+2. Restart your computer when prompted
+3. Follow [this link](https://www.microsoft.com/store/p/ubuntu/9nblggh4msv6) to go to the Microsoft Store and click "Get" to install the Ubuntu distro.
+4. Click the "Launch" button in the Windows store or launch the new "Ubuntu" app from the start menu.
+5. Wait for the installation to complete
+6. Follow the console prompts to create a new user and password
+7. Run the following command in the terminal prompt to update your packages:
 
-```bash
-sudo apt update && sudo apt upgrade
-```
+    ```bash
+    sudo apt update && sudo apt upgrade
+    ```
 
-7. Run the following command to install the g++ compiler and make:
+8. Run the following command to install the g++ compiler and make:
 
-```bash
-sudo apt-get install build-essential
-```
+    ```bash
+    sudo apt-get install build-essential
+    ```
 
 Sources:
 
-* https://docs.microsoft.com/en-us/windows/wsl/install-win10
-* https://docs.microsoft.com/en-us/windows/wsl/initialize-distro
+* <https://docs.microsoft.com/en-us/windows/wsl/install-win10>
+* <https://docs.microsoft.com/en-us/windows/wsl/initialize-distro>
 
 #### Option 2: MinGW
 
@@ -63,51 +63,53 @@ Sources:
 1. Open your terminal of choice
 2. Run the following command to update your packages:
 
-```bash
-sudo apt update && sudo apt upgrade
-```
+    ```bash
+    sudo apt update && sudo apt upgrade
+    ```
 
 3. Run the following command to install the g++ compiler and make:
 
-```bash
-sudo apt-get install build-essential
-```
+    ```bash
+    sudo apt-get install build-essential
+    ```
 
 ### Mac
 
 1. Open Terminal (command + space and type terminal)
-2. Run the following command to install the Homebrew package manager for macOS: 
+2. Run the following command to install the Homebrew package manager for macOS:
 
-```bash
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
+    ```bash
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    ```
+
 3. Once complete, run the following command to update Hombrew and install GNU compiler collection 8:
 
-```bash
-brew update && brew upgrade && brew install gcc@8
-```
+    ```bash
+    brew update && brew upgrade && brew install gcc@8
+    ```
 
 4. Once complete, run the following command to update your PATH environment variable and link g++ to g++-8:
- 
- ```bash
- echo "PATH=\"/usr/local/bin:$PATH\"" >> ~/.bash_profile && ln -s /usr/local/bin/g++-8 /usr/local/bin/g++
- ``` 
 
-5. Close all Terminal sessions for changes to take effect: 
-- hold command and press tab to view open programs
-- while holding command key tab until Terminal instance is selected
-- press Q once Terminal icon is selected to quit all Terminal sessions
+    ```bash
+    echo "PATH=\"/usr/local/bin:$PATH\"" >> ~/.bash_profile && ln -s /usr/local/bin/g++-8 /usr/local/bin/g++
+    ```
+
+5. Close all Terminal sessions for changes to take effect:
+
+   * hold command and press tab to view open programs
+   * while holding command key tab until Terminal instance is selected
+   * press Q once Terminal icon is selected to quit all Terminal sessions
 
 6. Reopen Terminal and test successful installation of g++ by typing g++ and ensuring you get the follwing as output:
 
-```bash
-g++: fatal error: no input files
-compilation terminated.
-```
+    ```bash
+    g++: fatal error: no input files
+    compilation terminated.
+    ```
 
 ## Usage
 
-1. Go to to the releases page (https://github.com/JKomskis/COP3530-S19-Huffman-Algorithm/releases) and download the zip folder for version 1.0 of the project.
+1. Go to to the releases page (<https://github.com/JKomskis/COP3530-S19-Huffman-Algorithm/releases)> and download the zip folder for version 1.0 of the project.
 2. Extract the zip folder.
 3. Open your terminal (Ubuntu you're on Windows and following option 1, Command Prompt if you're on Windows and following option 2, your terminal of choice if you're on Linux, or Terminal if you're on a Mac)
 4. Navigate into the project folder. The "cd" command will allow you to change directories. If you want to see what is inside a directory, use the "ls" command.
@@ -119,8 +121,8 @@ If you are experiencing problems compiling and running the project, run "make cl
 
 ## Resouces
 
-* https://spin.atomicobject.com/2016/08/26/makefile-c-projects/
-* https://www.gnu.org/software/make/manual/html_node/Wildcard-Function.html#Wildcard-Function
-* https://stackoverflow.com/questions/2908057/can-i-compile-all-cpp-files-in-src-to-os-in-obj-then-link-to-binary-in
-* https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html
-* https://stackoverflow.com/questions/1814270/gcc-g-option-to-place-all-object-files-into-separate-directory
+* <https://spin.atomicobject.com/2016/08/26/makefile-c-projects/>
+* <https://www.gnu.org/software/make/manual/html_node/Wildcard-Function.html#Wildcard-Function>
+* <https://stackoverflow.com/questions/2908057/can-i-compile-all-cpp-files-in-src-to-os-in-obj-then-link-to-binary-in>
+* <https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html>
+* <https://stackoverflow.com/questions/1814270/gcc-g-option-to-place-all-object-files-into-separate-directory>
