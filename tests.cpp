@@ -9,6 +9,13 @@ std::string file_as_string(std::string file){
     return string;
 }
 
+void test_encode_decode(const huffman_tree &tree, const std::vector<std::string> &files_to_test) {
+    for(std::string file_name: files_to_test) {
+        std::string encoded_string = tree.encode(file_name);
+        CHECK( tree.decode(encoded_string) == file_as_string(file_name) );
+    }
+}
+
 TEST_CASE("Test case on file.txt") {
     const std::string file_to_test = "texts/iliad_1.txt";
     huffman_tree tree(file_to_test);
@@ -26,10 +33,9 @@ TEST_CASE("Balanced Tree") {
     }
 
     SECTION("Encode/Decode") {
-        std::string file_name = GENERATE(as<std::string>{}, "texts/balanced_alphabet.txt",
-                                                            "texts/unbalanced_alphabet.txt");
-        std::string encoded_string = tree.encode(file_name);
-        CHECK( tree.decode(encoded_string) == file_as_string(file_name) );
+        std::vector<std::string> files_to_test = {"texts/balanced_alphabet.txt",
+                                                    "texts/unbalanced_alphabet.txt"};
+        test_encode_decode(tree, files_to_test);
     }
 }
 
@@ -52,9 +58,8 @@ TEST_CASE("Tall Tree") {
     }
 
     SECTION("Encode/Decode") {
-        std::string file_name = GENERATE(as<std::string>{}, "texts/unbalanced_alphabet.txt");
-        std::string encoded_string = tree.encode(file_name);
-        CHECK( tree.decode(encoded_string) == file_as_string(file_name) );
+        std::vector<std::string> files_to_test = {"texts/unbalanced_alphabet.txt"};
+        test_encode_decode(tree, files_to_test);
     }
 }
 
@@ -67,12 +72,11 @@ TEST_CASE("All ASCII Values") {
     }
 
     SECTION("Encode/Decode") {
-        std::string file_name = GENERATE(as<std::string>{}, "texts/all_ascii.txt",
-                                                            "texts/balanced_alphabet.txt",
-                                                            "texts/iliad_1.txt",
-                                                            "texts/litany.txt",
-                                                            "texts/unbalanced_alphabet.txt");
-        std::string encoded_string = tree.encode(file_name);
-        CHECK( tree.decode(encoded_string) == file_as_string(file_name) );
+        std::vector<std::string> files_to_test = {"texts/all_ascii.txt",
+                                                    "texts/balanced_alphabet.txt",
+                                                    "texts/iliad_1.txt",
+                                                    "texts/litany.txt",
+                                                    "texts/unbalanced_alphabet.txt"};
+        test_encode_decode(tree, files_to_test);
     }
 }
