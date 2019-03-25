@@ -1,5 +1,10 @@
 #include "huffman_tree.h"
 
+/*
+Preconditions: file_name is the name of (and possibly path to) a text file
+Postconditions: Reads the contents of file_name and constructs a
+				huffman tree based on the character frequencies of the file contents
+*/
 huffman_tree::huffman_tree(const std::string &file_name){
 
 }
@@ -21,7 +26,9 @@ std::string huffman_tree::get_character_code(char character) const {
 /*
 Preconditions: file_name is the name of (and possibly path to) a text file
 Postconditions: Returns the Huffman encoding for the contents of file_name
-				if file name exists and an empty string otherwise
+				if file name exists and an empty string otherwise.
+				If the file contains letters not present in the huffman_tree,
+				return an empty string
 */
 std::string huffman_tree::encode(const std::string &file_name) const {
 	return "";

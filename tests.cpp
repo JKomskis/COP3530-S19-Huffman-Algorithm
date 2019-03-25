@@ -12,7 +12,13 @@ std::string file_as_string(std::string file){
 void test_encode_decode(const huffman_tree &tree, const std::vector<std::string> &files_to_test) {
     for(std::string file_name: files_to_test) {
         std::string encoded_string = tree.encode(file_name);
-        CHECK( tree.decode(encoded_string) == file_as_string(file_name) );
+
+        bool valid_chars = true;
+        for(char c: encoded_string) {
+            valid_chars &= (c == '0') || (c == '1');
+        }
+        CHECK(valid_chars);
+        CHECK(tree.decode(encoded_string) == file_as_string(file_name));
     }
 }
 
@@ -96,10 +102,10 @@ TEST_CASE("Single Letter") {
 }
 
 TEST_CASE("Encoding Mississippi") {
-  huffman_tree tree("texts/mississppi.txt");
+  huffman_tree tree("texts/mississippi.txt");
 
   SECTION("Verify Huffman Code Length") {
-      std::string encoded_string = tree.encode("texts/mississppi.txt");
+      std::string encoded_string = tree.encode("texts/mississippi.txt");
       CHECK(encoded_string.length() == 21);
   }
 
@@ -107,4 +113,16 @@ TEST_CASE("Encoding Mississippi") {
       std::vector<std::string> files_to_test = {"texts/mississippi.txt"};
       test_encode_decode(tree, files_to_test);
   }
+}
+
+TEST_CASE("Invalid Encode/Decode") {
+    huffman_tree tree("texts/balanced_alphabet.txt");
+
+    SECTION("Encode") {
+        CHECK(tree.encode("texts/doesnt_exist.txt") == "");
+        CHECK(tree.encode("texts/all_ascii.txt") == "");
+        CHECK(tree.encode("texts/iliad_1.txt") == "");
+        CHECK(tree.encode("texts/litany.txt") == "");
+        CHECK(tree.decode("") == "");
+    }
 }
