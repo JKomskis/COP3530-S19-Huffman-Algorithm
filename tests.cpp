@@ -27,7 +27,7 @@ TEST_CASE("Test case on file.txt") {
     huffman_tree tree(file_to_test);
 
     std::string encoded_file_string = tree.encode(file_to_test);
-    CHECK( tree.decode(encoded_file_string) == file_as_string(file_to_test));
+    CHECK(tree.decode(encoded_file_string) == file_as_string(file_to_test));
 }
 
 TEST_CASE("Balanced Tree") {
@@ -74,7 +74,9 @@ TEST_CASE("All ASCII Values") {
 
     SECTION("Verify Huffman Code Length") {
         std::string encoded_string = tree.encode("texts/all_ascii.txt");
-        CHECK(encoded_string.length() == 896);
+        // every code has a length of 7, except for 1, which has a length of 6
+        // so the total length is 126 * 7 + 6 = 888
+        CHECK(encoded_string.length() == 888);
     }
 
     SECTION("Encode/Decode") {
@@ -118,11 +120,10 @@ TEST_CASE("Encoding Mississippi") {
 TEST_CASE("Invalid Encode/Decode") {
     huffman_tree tree("texts/balanced_alphabet.txt");
 
-    SECTION("Encode") {
         CHECK(tree.encode("texts/doesnt_exist.txt") == "");
         CHECK(tree.encode("texts/all_ascii.txt") == "");
         CHECK(tree.encode("texts/iliad_1.txt") == "");
         CHECK(tree.encode("texts/litany.txt") == "");
         CHECK(tree.decode("") == "");
-    }
+        CHECK(tree.decode("WAIT_NO_DON'T") == "");
 }
