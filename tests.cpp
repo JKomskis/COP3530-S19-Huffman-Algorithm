@@ -22,12 +22,18 @@ void test_encode_decode(const huffman_tree &tree, const std::vector<std::string>
     }
 }
 
-TEST_CASE("Test case on file.txt") {
-    const std::string file_to_test = "texts/iliad_1.txt";
-    huffman_tree tree(file_to_test);
+TEST_CASE("Iliad") {
+    huffman_tree tree("texts/iliad_1.txt");
 
-    std::string encoded_file_string = tree.encode(file_to_test);
-    CHECK(tree.decode(encoded_file_string) == file_as_string(file_to_test));
+    SECTION("Encode/Decode") {
+        std::vector<std::string> files_to_test = {"texts/iliad_1.txt",
+                                                    "balanced_alphabet.txt",
+                                                    "texts/litany.txt",
+                                                    "texts/mississippi.txt"
+                                                    "texts/single_letter.txt",
+                                                    "unbalanced_alphabet.txt"};
+        test_encode_decode(tree, files_to_test);
+    }
 }
 
 TEST_CASE("Balanced Tree") {
