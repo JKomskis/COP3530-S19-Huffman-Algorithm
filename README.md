@@ -109,7 +109,7 @@ Sources:
 
 ## Usage
 
-1. Go to to the releases page (<https://github.com/JKomskis/COP3530-S19-Huffman-Algorithm/releases)> and download the zip folder for the latest version of the project.
+1. Go to to the releases page (<https://github.com/JKomskis/COP3530-S19-Huffman-Algorithm/releases>) and download the zip folder for the latest version of the project.
 2. Extract the zip folder.
 3. Open your terminal (Ubuntu you're on Windows and following option 1, Command Prompt if you're on Windows and following option 2, your terminal of choice if you're on Linux, or Terminal if you're on a Mac)
 4. Navigate into the project folder. The "cd" command will allow you to change directories. If you want to see what is inside a directory, use the "ls" command.
