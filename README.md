@@ -88,10 +88,13 @@ Sources:
     brew update && brew upgrade && brew install gcc@8
     ```
 
-4. Once complete, run the following command to update your PATH environment variable and link g++ to g++-8:
+4. Once complete, run the following commands to update your PATH environment variable and link g++ to g++-8:
 
     ```bash
-    echo "PATH=\"/usr/local/bin:$PATH\"" >> ~/.bash_profile && ln -s /usr/local/bin/g++-8 /usr/local/bin/g++
+    echo "PATH=\"/usr/local/bin:$PATH\"" >> ~/.bash_profile
+    ```
+    ```bash
+    sudo ln -s /usr/local/bin/g++-8 /usr/local/bin/g++
     ```
 
 5. Close all Terminal sessions for changes to take effect:
