@@ -113,7 +113,7 @@ Sources:
 2. Extract the zip folder.
 3. Open your terminal (Ubuntu you're on Windows and following option 1, Command Prompt if you're on Windows and following option 2, your terminal of choice if you're on Linux, or Terminal if you're on a Mac)
 4. Navigate into the project folder. The "cd" command will allow you to change directories. If you want to see what is inside a directory, use the "ls" command.
-5. Run "make" in the project skeleton folder to automatically build the project and run it against the test cases. If everything works properly you should see a couple commands run on the terminal, and a line at the very end that says "All tests passed (22 assertions in 4 test cases)".
+5. Run "make" in the project skeleton folder to automatically build the project and run it against the test cases. If everything works properly you should see a couple commands run on the terminal. When you first start the project, running make should output "test cases:  7 |  1 passed |  6 failed \n assertions: 51 | 24 passed | 27 failed". When you finish implementing the interface properly, it should instead output "All tests passed (X assertions in X test cases)".
 
 Note: The first build can take up to 30 seconds as it has to compile everything. Subsequent build should be much faster, as it will only recompile the files that have changed.
 
